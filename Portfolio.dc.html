@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Onest:wght@500;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"Involve";font-weight:400 500;font-display:swap;src:url("https://db.onlinewebfonts.com/t/31942ca2515675d7a0a103ae2987fc22.woff2") format("woff2"),url("https://db.onlinewebfonts.com/t/31942ca2515675d7a0a103ae2987fc22.woff") format("woff"),url("https://db.onlinewebfonts.com/t/31942ca2515675d7a0a103ae2987fc22.ttf") format("truetype")}
+@font-face{font-family:"Involve";font-weight:600 700;font-display:swap;src:url("https://db.onlinewebfonts.com/t/4fe2b34ab209707d2888a1e51625ae53.woff2") format("woff2"),url("https://db.onlinewebfonts.com/t/4fe2b34ab209707d2888a1e51625ae53.woff") format("woff"),url("https://db.onlinewebfonts.com/t/4fe2b34ab209707d2888a1e51625ae53.ttf") format("truetype")}
+html{scroll-behavior:smooth}
+body{margin:0;background:rgb(241,241,241);color:#000;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#000;text-decoration:none}
+a:hover{color:rgb(147,104,252)}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes mqr{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+</style>
+<template id="__bundler_thumbnail" data-bg-color="#F1F1F1"><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#F1F1F1"></rect><circle cx="600" cy="400" r="200" fill="#9368FC"></circle><text x="600" y="470" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="200" fill="#000">АМ</text></svg></template>
+</helmet>
+<div style="font-family:Involve,Onest,-apple-system,'Helvetica Neue',Arial,sans-serif;background:rgb(241,241,241);overflow-x:hidden;min-height:100vh">
+
+<header style="position:sticky;top:0;z-index:40;background:rgba(241,241,241,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgb(215,215,215)">
+  <div style="max-width:1440px;margin:0 auto;padding:{{ headPad }};display:flex;flex-wrap:wrap;gap:12px 30px;justify-content:space-between;align-items:center">
+    <a href="#top" onClick="{{ toTop }}" style="font-weight:700;font-size:{{ logoSize }};letter-spacing:0.01em;line-height:100%;color:#000">Алина Мигачёва</a>
+    <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="Меню" style="width:44px;height:44px;margin-right:-10px;border:none;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0">
+        <span style="position:relative;width:24.5px;height:14px;display:block">
+          <span style="position:absolute;left:0;right:0;height:2px;border-radius:1px;background:#000;transition:transform .3s,top .3s;top:{{ b1Top }};transform:{{ b1Rot }}"></span>
+          <span style="position:absolute;left:0;right:0;top:6px;height:2px;border-radius:1px;background:#000;transition:opacity .2s;opacity:{{ b2Op }}"></span>
+          <span style="position:absolute;left:0;right:0;height:2px;border-radius:1px;background:#000;transition:transform .3s,top .3s;top:{{ b3Top }};transform:{{ b3Rot }}"></span>
+        </span>
+      </button>
+    </sc-if>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;flex-wrap:wrap;gap:12px clamp(20px,2.2vw,30px);align-items:center;font-weight:500;font-size:clamp(13px,1.2vw,16.5px);letter-spacing:0.01em;line-height:100%">
+      <a href="#projects" style="color:#000;transition:color .2s" style-hover="color:rgb(147,104,252)">Проекты</a>
+      <a href="#reviews" style="color:#000;transition:color .2s" style-hover="color:rgb(147,104,252)">Отзывы</a>
+      <a href="#about" style="color:#000;transition:color .2s" style-hover="color:rgb(147,104,252)">Обо мне</a>
+      <a href="#contacts" style="color:#000;transition:color .2s" style-hover="color:rgb(147,104,252)">Контакты</a>
+    </nav>
+    </sc-if>
+  </div>
+</header>
+
+<sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+  <section id="top" data-screen-label="Hero mobile" style="padding:0 16px 29px;position:relative;overflow:hidden">
+    <h1 style="margin:0;font-family:'Dela Gothic One',sans-serif;font-weight:400;font-size:14.985vw;line-height:0.8;letter-spacing:-0.03em;text-align:center;white-space:nowrap;position:relative;z-index:1;padding-top:0.02em">маркетинг<br>дизайнер</h1>
+    <img src="assets/hero-sm.webp" decoding="async" alt="Алина Мигачёва" style="display:block;width:59.76vw;aspect-ratio:240.226/299;object-fit:cover;object-position:center bottom;margin:-4.5vw auto 0;position:relative;z-index:2">
+    <p style="margin:1px 0 0;font-weight:500;font-size:4vw;line-height:118%;letter-spacing:0.01em;text-wrap:pretty">Привет! Я&nbsp;—&nbsp;Алина. Превращаю маркетинговые задачи в&nbsp;визуальные решения, которые работают на&nbsp;бизнес. Я&nbsp;соединяю дизайн, маркетинг и&nbsp;стратегию, чтобы создавать не&nbsp;просто красивую картинку, а&nbsp;коммуникацию.</p>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:2vw;margin-top:5.7vw">
+      <a href="#projects" style="display:flex;justify-content:space-between;align-items:center;width:39.6vw;height:13.8vw;padding:0 2.8vw 0 5.1vw;border-radius:9999px;background:rgb(147,104,252);color:#000;font-family:Onest,sans-serif;font-weight:700;font-size:4.5vw;line-height:1.1;letter-spacing:-0.02em;transition:transform .2s" style-active="transform:scale(.98)">Проекты<span style="width:8.3vw;height:8.3vw;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="assets/arrow.svg" alt="" style="width:4.2vw;height:4.2vw"></span></a>
+      <a href="https://t.me/alinamigach" target="_blank" rel="noopener" onClick="{{ openTg }}" style="display:flex;justify-content:space-between;align-items:center;width:39.6vw;height:13.8vw;padding:0 2.8vw 0 5.1vw;border-radius:9999px;background:rgb(255,139,185);color:#000;font-family:Onest,sans-serif;font-weight:700;font-size:4.5vw;line-height:1.1;letter-spacing:-0.02em;transition:transform .2s" style-active="transform:scale(.98)">Летс ток<span style="width:8.3vw;height:8.3vw;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="assets/arrow.svg" alt="" style="width:4.2vw;height:4.2vw"></span></a>
+    </div>
+  </section>
+</sc-if>
+<sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+<section id="top" data-screen-label="Hero" style="max-width:1440px;margin:0 auto;padding:0 clamp(20px,8vw,115px) 0;position:relative"><h1 style="margin:clamp(-10px,-0.6vw,-4px) 0 clamp(24px,3.7vw,53px);font-family:'Dela Gothic One',sans-serif;font-weight:400;font-size:clamp(40px,13.1vw,196px);line-height:0.8;letter-spacing:-0.03em;text-align:center;white-space:nowrap;position:relative;z-index:1;padding-bottom:0.1em">маркетинг<br>дизайнер</h1>
+  <div style="display:grid;grid-template-columns:{{ heroCols }};align-items:stretch;gap:24px">
+    <div style="min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:clamp(40px,4.7vw,60px);padding-top:clamp(24px,8vw,115px);padding-bottom:clamp(28px,4.2vw,60px);order:1">
+      <p style="margin:0;font-weight:500;font-size:clamp(11px,1.25vw,18.05px);line-height:100%;letter-spacing:0.01em;display:flex;flex-direction:column;white-space:nowrap">
+        <span>Привет! Я&nbsp;—&nbsp;Алина.</span>
+        <span style="padding-left:clamp(1.5em,7.8vw,7.9em)">Превращаю</span>
+        <span style="padding-left:clamp(1.5em,7.8vw,7.9em)">маркетинговые задачи</span>
+        <span style="height:1em"></span>
+        <span style="padding-left:clamp(1em,4.3vw,4.4em)">в&nbsp;визуальные решения,</span>
+        <span>которые работают на&nbsp;бизнес.</span>
+      </p>
+      <a href="#projects" style="align-self:flex-start;display:flex;align-items:center;gap:clamp(10px,1.57vw,22.67px);padding:clamp(8px,1.18vw,17px) clamp(8px,1.18vw,17px) clamp(8px,1.18vw,17px) clamp(14px,2.16vw,31.17px);border-radius:56.67px;background:rgb(147,104,252);color:#000;font-family:Onest,sans-serif;font-weight:700;font-size:clamp(15px,1.97vw,28.34px);line-height:1.1;letter-spacing:-0.02em;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-3px);box-shadow:0 12px 28px rgba(147,104,252,.4);color:#000">Проекты<span style="width:clamp(32px,3.54vw,51px);height:clamp(32px,3.54vw,51px);border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="assets/arrow.svg" alt="" style="width:24px;height:24px"></span></a>
+    </div>
+    <div style="min-width:0;order:{{ photoOrder }};display:flex;justify-content:center;align-items:flex-end;margin-top:-6.5vw;transform:translateX(2.2vw);position:relative;z-index:2">
+      <img src="assets/hero-sm.webp" decoding="async" alt="Алина Мигачёва" style="width:100%;max-width:609px;aspect-ratio:1124/1399;object-fit:cover;object-position:center bottom;display:block;position:relative;z-index:2">
+    </div>
+    <div style="min-width:0;display:flex;flex-direction:column;align-items:flex-end;gap:clamp(40px,4.7vw,60px);padding-top:clamp(24px,8vw,115px);padding-bottom:clamp(28px,4.2vw,60px);order:3">
+      <p style="margin:0;font-weight:500;font-size:clamp(11px,1.25vw,18.05px);line-height:100%;letter-spacing:0.01em;display:flex;flex-direction:column;white-space:nowrap">
+        <span style="align-self:flex-end">Я&nbsp;соединяю дизайн,</span>
+        <span>маркетинг и&nbsp;стратегию,</span>
+        <span>чтобы создавать не&nbsp;просто</span>
+        <span style="height:1em"></span>
+        <span style="padding-left:clamp(1em,3vw,3.1em)">красивую картинку,</span>
+        <span style="align-self:flex-end">а&nbsp;коммуникацию.</span>
+      </p>
+      <a href="https://t.me/alinamigach" target="_blank" rel="noopener" onClick="{{ openTg }}" style="align-self:flex-end;display:flex;align-items:center;gap:clamp(10px,1.57vw,22.67px);padding:clamp(8px,1.18vw,17px) clamp(8px,1.18vw,17px) clamp(8px,1.18vw,17px) clamp(14px,2.16vw,31.17px);border-radius:56.67px;background:rgb(255,139,185);color:#000;font-family:Onest,sans-serif;font-weight:700;font-size:clamp(15px,1.97vw,28.34px);line-height:1.1;letter-spacing:-0.02em;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-3px);box-shadow:0 12px 28px rgba(255,139,185,.5);color:#000">Летс ток<span style="width:clamp(32px,3.54vw,51px);height:clamp(32px,3.54vw,51px);border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="assets/arrow.svg" alt="" style="width:24px;height:24px"></span></a>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<div style="background:#fff;overflow:hidden;padding:{{ mqPad }};position:relative;z-index:3">
+  <div style="display:flex;width:max-content;animation:mq {{ speed }}s linear infinite">
+    <sc-for list="{{ tagsLoop }}" as="t" hint-placeholder-count="18">
+      <span style="font-family:'Dela Gothic One',sans-serif;font-size:{{ mqFont }};line-height:0.9;white-space:nowrap;padding-right:{{ mqGap }}">{{ t }}</span>
+    </sc-for>
+  </div>
+</div>
+
+<section data-screen-label="Services" style="background:rgb(217,217,217);padding:clamp(56px,8.6vw,124px) clamp(20px,8vw,115px)">
+  <div style="max-width:1210px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:20px">
+    <div style="background:#fff;border-radius:30px;padding:40px;display:flex;flex-direction:column;gap:22px;transition:transform .3s" style-hover="transform:translateY(-4px)">
+      <h3 style="margin:0;font-family:'Dela Gothic One',sans-serif;font-weight:400;font-size:clamp(26px,2.5vw,36.1px);line-height:1;letter-spacing:0.01em">Привлекаю<br>и&nbsp;удерживаю<br>внимание аудитории</h3>
+      <p style="margin:0;text-wrap:pretty;max-width:445px;font-weight:500;font-size:18.05px;line-height:130%;letter-spacing:0.01em">Создаю визуальные решения, которые выделяют бренд, попадают в&nbsp;нужную ЦА и&nbsp;помогают маркетингу эффективнее доносить предложение.</p>
+    </div>
+    <div style="background:#fff;border-radius:30px;padding:40px;display:flex;flex-direction:column;gap:22px;transition:transform .3s" style-hover="transform:translateY(-4px)">
+      <h3 style="margin:0;font-family:'Dela Gothic One',sans-serif;font-weight:400;font-size:clamp(26px,2.5vw,36.1px);line-height:1;letter-spacing:0.01em">Превращаю дизайн<br>в&nbsp;инструмент роста</h3>
+      <p style="margin:auto 0 0;text-wrap:pretty;max-width:445px;font-weight:500;font-size:18.05px;line-height:130%;letter-spacing:0.01em">Отталкиваюсь от&nbsp;бизнес-задач и&nbsp;метрик, а&nbsp;не&nbsp;только эстетики: помогаю привлекать клиентов, поддерживать продажи и&nbsp;влиять на&nbsp;выручку.</p>
+    </div>
+    <div style="grid-column:1 / -1;background:#fff;border-radius:30px;padding:40px;display:flex;flex-direction:column;gap:22px;transition:transform .3s" style-hover="transform:translateY(-4px)">
+      <h3 style="margin:0;font-family:'Dela Gothic One',sans-serif;font-weight:400;font-size:clamp(26px,2.5vw,36.1px);line-height:1;letter-spacing:0.01em">Строю сильный и&nbsp;цельный бренд</h3>
+      <p style="margin:0;text-wrap:pretty;max-width:640px;font-weight:500;font-size:18.05px;line-height:130%;letter-spacing:0.01em">Развиваю визуальный язык и&nbsp;систему, благодаря которым бренд становится узнаваемым, последовательным и&nbsp;вызывает нужные ассоциации.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects" data-screen-label="Projects" style="max-width:1440px;margin:0 auto;padding:clamp(56px,8.6vw,124px) {{ projPadX }};scroll-margin-top:60px">
+  <div style="max-width:1210px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:{{ projGap }}">
+    <div onMouseEnter="{{ p0.enter }}" onMouseLeave="{{ leave }}" onClick="{{ openYu }}" style="cursor:pointer;grid-column:1 / -1;aspect-ratio:{{ wideAr }};border-radius:{{ projR }};overflow:hidden;position:relative;background:rgb(255,139,185);transition:transform .35s,box-shadow .35s" style-hover="transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.12)"><div style="position:absolute;inset:0;z-index:2;background:rgb(85,85,85);mix-blend-mode:multiply;pointer-events:none;transition:opacity .35s;opacity:{{ p0.op }}"></div><div style="position:absolute;z-index:3;left:clamp(24px,5.2vw,63px);right:clamp(24px,5.2vw,63px);bottom:clamp(24px,4vw,49px);display:flex;flex-direction:column;gap:clamp(12px,2.6vw,32px);color:#fff;pointer-events:none;transition:opacity .35s,transform .35s;opacity:{{ p0.op }};transform:{{ p0.ty }}"><span style="font-weight:700;font-size:{{ hovT }};line-height:1.1;letter-spacing:0em">Фитмост<br>х&nbsp;МТС Юрент</span><span style="font-weight:500;font-size:{{ hovD }};line-height:1.5;letter-spacing:0.01em;text-wrap:pretty">Креативная наружная реклама<br>для&nbsp;увеличения внимания к&nbsp;брендам</span></div><sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}"><div role="img" aria-label="Проект" style="position:absolute;left:-0.868%;top:-25.551%;width:101.777%;height:150.937%;background:url(assets/p1-sm.jpg) center / cover no-repeat"></div></sc-if><sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="Проект" style="position:absolute;inset:0;background:url(assets/yu-mobile.png) center / cover no-repeat"></div></sc-if></div>
+    <div onMouseEnter="{{ p4.enter }}" onMouseLeave="{{ leave }}" onClick="{{ openRf }}" style="cursor:pointer;aspect-ratio:{{ halfAr }};border-radius:{{ projR }};overflow:hidden;position:relative;background:rgb(255,139,185);transition:transform .35s,box-shadow .35s" style-hover="transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.12)"><div style="position:absolute;inset:0;z-index:2;background:rgb(85,85,85);mix-blend-mode:multiply;pointer-events:none;transition:opacity .35s;opacity:{{ p4.op }}"></div><div style="position:absolute;z-index:3;left:clamp(24px,5.2vw,63px);right:clamp(24px,5.2vw,63px);bottom:clamp(24px,4vw,49px);display:flex;flex-direction:column;gap:clamp(12px,2.6vw,32px);color:#fff;pointer-events:none;transition:opacity .35s,transform .35s;opacity:{{ p4.op }};transform:{{ p4.ty }}"><span style="font-weight:700;font-size:{{ hovT }};line-height:1.1;letter-spacing:0em">re-feel<br>wellness day</span><span style="font-weight:500;font-size:{{ hovD }};line-height:1.5;letter-spacing:0.01em;text-wrap:pretty">Пространство для&nbsp;подзарядки души, разума и&nbsp;тела</span></div><div role="img" aria-label="Проект" style="position:absolute;inset:0;background:url(assets/p5-sm.jpg) center / cover no-repeat"></div></div>
+    <div onMouseEnter="{{ p5.enter }}" onMouseLeave="{{ leave }}" onClick="{{ openLv }}" style="cursor:pointer;aspect-ratio:{{ halfAr }};border-radius:{{ projR }};overflow:hidden;position:relative;background:rgb(255,139,185);transition:transform .35s,box-shadow .35s" style-hover="transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.12)"><div style="position:absolute;inset:0;z-index:2;background:rgb(85,85,85);mix-blend-mode:multiply;pointer-events:none;transition:opacity .35s;opacity:{{ p5.op }}"></div><div style="position:absolute;z-index:3;left:clamp(24px,5.2vw,63px);right:clamp(24px,5.2vw,63px);bottom:clamp(24px,4vw,49px);display:flex;flex-direction:column;gap:clamp(12px,2.6vw,32px);color:#fff;pointer-events:none;transition:opacity .35s,transform .35s;opacity:{{ p5.op }};transform:{{ p5.ty }}"><span style="font-weight:700;font-size:{{ hovT }};line-height:1.1;letter-spacing:0em">Яндекс<br>Лавка</span><span style="font-weight:500;font-size:{{ hovD }};line-height:1.5;letter-spacing:0.01em;text-wrap:pretty">Вкусный и&nbsp;полезный контент</span></div><div role="img" aria-label="Проект" style="position:absolute;inset:0;background:url(assets/proj-lavka.jpg) center / cover no-repeat"></div></div>
+    <div onMouseEnter="{{ p3.enter }}" onMouseLeave="{{ leave }}" onClick="{{ openRl }}" style="cursor:pointer;grid-column:1 / -1;aspect-ratio:{{ wideAr }};border-radius:{{ projR }};overflow:hidden;position:relative;background:rgb(255,139,185);transition:transform .35s,box-shadow .35s" style-hover="transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.12)"><div style="position:absolute;inset:0;z-index:2;background:rgb(85,85,85);mix-blend-mode:multiply;pointer-events:none;transition:opacity .35s;opacity:{{ p3.op }}"></div><div style="position:absolute;z-index:3;left:clamp(24px,5.2vw,63px);right:clamp(24px,5.2vw,63px);bottom:clamp(24px,4vw,49px);display:flex;flex-direction:column;gap:clamp(12px,2.6vw,32px);color:#fff;pointer-events:none;transition:opacity .35s,transform .35s;opacity:{{ p3.op }};transform:{{ p3.ty }}"><span style="font-weight:700;font-size:{{ hovT }};line-height:1.1;letter-spacing:0em">Фитмост<br>х&nbsp;r.a.w.life</span><span style="font-weight:500;font-size:{{ hovD }};line-height:1.5;letter-spacing:0.01em;text-wrap:pretty">Протеиновый батончик как&nbsp;носитель<br>ценностей бренда</span></div><sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}"><div role="img" aria-label="Проект" style="position:absolute;left:-7.253%;top:-19.669%;width:114.424%;height:143.162%;background:url(assets/proj-pants.jpg) center / cover no-repeat"></div></sc-if><sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="Проект" style="position:absolute;inset:0;background:url(assets/rl-mobile.png) center / cover no-repeat"></div></sc-if></div>
+    <div onMouseEnter="{{ p1.enter }}" onMouseLeave="{{ leave }}" onClick="{{ openCh }}" style="cursor:pointer;aspect-ratio:{{ halfAr }};border-radius:{{ projR }};overflow:hidden;position:relative;background:rgb(147,104,252);transition:transform .35s,box-shadow .35s" style-hover="transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.12)"><div style="position:absolute;inset:0;z-index:2;background:rgb(85,85,85);mix-blend-mode:multiply;pointer-events:none;transition:opacity .35s;opacity:{{ p1.op }}"></div><div style="position:absolute;z-index:3;left:clamp(24px,5.2vw,63px);right:clamp(24px,5.2vw,63px);bottom:clamp(24px,4vw,49px);display:flex;flex-direction:column;gap:clamp(12px,2.6vw,32px);color:#fff;pointer-events:none;transition:opacity .35s,transform .35s;opacity:{{ p1.op }};transform:{{ p1.ty }}"><span style="font-weight:700;font-size:{{ hovT }};line-height:1.1;letter-spacing:0em">Фитмост<br>х&nbsp;Chang</span><span style="font-weight:500;font-size:{{ hovD }};line-height:1.5;letter-spacing:0.01em;text-wrap:pretty">Убэ-флоу или&nbsp;повод прикоснуться к&nbsp;бренду</span></div><div role="img" aria-label="Проект" style="position:absolute;left:-0.678%;top:0;width:101.356%;height:100%;background:url(assets/proj-codex.png) 38.155% 23.482% / 100.093% 195.503% no-repeat"></div></div>
+    <div onMouseEnter="{{ p2.enter }}" onMouseLeave="{{ leave }}" onClick="{{ openNt }}" style="cursor:pointer;aspect-ratio:{{ halfAr }};border-radius:{{ projR }};overflow:hidden;position:relative;background:rgb(0,173,255);container-type:inline-size;transition:transform .35s,box-shadow .35s" style-hover="transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.12)"><div style="position:absolute;inset:0;z-index:2;background:rgb(85,85,85);mix-blend-mode:multiply;pointer-events:none;transition:opacity .35s;opacity:{{ p2.op }}"></div><div style="position:absolute;z-index:3;left:clamp(24px,5.2vw,63px);right:clamp(24px,5.2vw,63px);bottom:clamp(24px,4vw,49px);display:flex;flex-direction:column;gap:clamp(12px,2.6vw,32px);color:#fff;pointer-events:none;transition:opacity .35s,transform .35s;opacity:{{ p2.op }};transform:{{ p2.ty }}"><span style="font-weight:700;font-size:{{ hovT }};line-height:1.1;letter-spacing:0em">Netteca</span><span style="font-weight:500;font-size:{{ hovD }};line-height:1.5;letter-spacing:0.01em;text-wrap:pretty">Космические соцсети<br>Стартуем?</span></div><div style="position:absolute;left:-30.508cqw;top:-22.028cqw;width:143.937cqw;height:234.502cqw;overflow:hidden">
+        <img src="assets/proj-wave.svg" alt="" style="position:absolute;left:0;top:0;width:143.854cqw;height:225.647cqw;display:block">
+        <div style="position:absolute;left:0.122cqw;top:15.99cqw;width:143.815cqw;height:202.522cqw;background:#000"></div>
+        <div style="position:absolute;left:-20.332cqw;top:-9.932cqw;width:501.762cqw;height:245.51cqw;opacity:0.6;background:url(assets/p3-sm.jpg) center / cover no-repeat"></div>
+      </div>
+      <div style="position:absolute;left:2.373cqw;top:41.695cqw;width:95.361cqw;height:98.125cqw;opacity:0.5;border-radius:50%;background:rgb(222,222,222);filter:blur(25cqw)"></div>
+      <div role="img" aria-label="Проект" style="position:absolute;left:0;top:0;width:137.843cqw;height:116.935cqw;border-radius:16.773cqw;transform-origin:0 0;transform:translate(-35.085cqw,100.392cqw) matrix(0.5,-0.866,0.866,0.5,0,0);background:url(assets/proj-rocket.png) center / cover no-repeat"></div></div>
+  </div>
+</section>
+
+<section id="reviews" data-screen-label="Reviews" style="background:rgb(217,217,217);padding:{{ rvPad }};scroll-margin-top:60px">
+  <div style="max-width:1210px;margin:0 auto;display:flex;align-items:center;gap:clamp(12px,3vw,45px)">
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}"><button onClick="{{ prev }}" aria-label="Назад" style="flex:0 0 51px;width:51px;height:51px;border-radius:50%;border:none;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s" style-hover="background:rgb(255,139,185);transform:scale(1.08)"><img src="assets/arrow.svg" alt="" style="width:24px;height:24px;transform:rotate(-135deg)"></button></sc-if>
+    <div ref="{{ trackRef }}" style="flex:1;min-width:0;display:flex;gap:{{ rvGap }};align-items:center;overflow-x:{{ rvOver }};overflow-y:hidden;scroll-snap-type:{{ rvSnap }};scroll-padding-left:{{ rvSp }};padding:{{ rvTrackPad }};scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain">
+      <div style="flex:0 0 {{ rvW }};scroll-snap-align:start;background:#fff;border-radius:{{ rvR }};padding:{{ rvCardPad }};display:flex;flex-direction:column;gap:{{ rvCardGap }}">
+        <div style="display:flex;gap:{{ rvHeadGap }};align-items:center">
+          <img src="assets/avatar1.png" alt="" style="width:{{ rvAv }};height:{{ rvAv }};flex:0 0 {{ rvAv }};border-radius:50%;object-fit:cover;background:rgb(217,217,217)">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-weight:700;font-size:{{ rvName }};line-height:100%;letter-spacing:0.01em">Антон Авраменко</span>
+            <span style="font-weight:500;font-size:{{ rvRole }};line-height:100%;letter-spacing:0.01em;color:rgb(170,170,170)">ex CМО Фитмост, Вконтакте</span>
+          </div>
+        </div>
+        <p style="margin:0;text-wrap:pretty;font-weight:500;font-size:{{ rvBody }};line-height:{{ rvLh }}">Алина быстро стала тем человеком, на&nbsp;которого можно положиться. При&nbsp;этом она одинаково уверенно чувствует себя и&nbsp;в&nbsp;рутине, и&nbsp;в&nbsp;горящих запусках&nbsp;—&nbsp;и&nbsp;там, и&nbsp;там результат получается качественным.<br><br>Спокойное отношение к&nbsp;критике, командность в&nbsp;работе и&nbsp;баланс между творчеством и&nbsp;конверсиями. Уверен, что&nbsp;Алина станет отличным лидером для&nbsp;любой команды: она сочетает сильную визуальную насмотренность, системность, командность и&nbsp;спустя время даже менторство.</p>
+      </div>
+      <div style="flex:0 0 {{ rvW }};scroll-snap-align:start;background:#fff;border-radius:{{ rvR }};padding:{{ rvCardPad }};display:flex;flex-direction:column;gap:{{ rvCardGap }}">
+        <div style="display:flex;gap:{{ rvHeadGap }};align-items:center">
+          <img src="assets/avatar2.png" alt="" style="width:{{ rvAv }};height:{{ rvAv }};flex:0 0 {{ rvAv }};border-radius:50%;object-fit:cover;background:rgb(217,217,217)">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-weight:700;font-size:{{ rvName }};line-height:100%;letter-spacing:0.01em">Настя Бережинская</span>
+            <span style="font-weight:500;font-size:{{ rvRole }};line-height:100%;letter-spacing:0.01em;color:rgb(170,170,170)">ex арт-директор Фитмост</span>
+          </div>
+        </div>
+        <p style="margin:0;text-wrap:pretty;font-weight:500;font-size:{{ rvBody }};line-height:{{ rvLh }}">Мы работали и&nbsp;в&nbsp;Фитмосте больше года, а&nbsp;сейчас продолжаем сотрудничать на&nbsp;других проектах.<br><br>В&nbsp;твоей работе как&nbsp;дизайнера ценю сильный графический скилл, наличие схожего вкуса и&nbsp;видения, когда можно объяснить задачу, концепт, и&nbsp;ты предлагаешь реально стильные решения. И&nbsp;что&nbsp;еще важно: коммуникация и&nbsp;нормальное отношение к&nbsp;доработке макетов как&nbsp;к&nbsp;части работы, чтобы получить классный общий продукт. Также очень ценю твою тягу к&nbsp;знаниям и&nbsp;развитию: постоянно находишь курсы, которые развивают скиллы и&nbsp;насмотренность.<br><br>В&nbsp;общем, я&nbsp;всегда рада с&nbsp;тобой поработать, сама знаешь!</p>
+      </div>
+    <div style="flex:0 0 {{ rvW }};scroll-snap-align:start;background:#fff;border-radius:{{ rvR }};padding:{{ rvCardPad }};display:flex;flex-direction:column;gap:{{ rvCardGap }}">
+        <div style="display:flex;gap:{{ rvHeadGap }};align-items:center">
+          <div style="position:relative;width:{{ rvAv }};height:{{ rvAv }};flex:0 0 {{ rvAv }};border-radius:50%;overflow:hidden;background:rgb(217,217,217)"><div role="img" aria-label="" style="position:absolute;left:-1px;top:-0.5px;width:44px;height:44px;background:url(assets/avatar-default.png) center / cover no-repeat"></div><div style="position:absolute;left:-4px;top:0.5px;width:52.5px;height:52.5px;background:url(assets/avatar-anya.png) center / cover no-repeat"></div></div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-weight:700;font-size:{{ rvName }};line-height:100%;letter-spacing:0.01em">Аня Елфимова</span>
+            <span style="font-weight:500;font-size:{{ rvRole }};line-height:100%;letter-spacing:0.01em;color:rgb(170,170,170)">ex арт-директор re-feel</span>
+          </div>
+        </div>
+        <p style="margin:0;text-wrap:pretty;font-weight:500;font-size:{{ rvBody }};line-height:{{ rvLh }}">Алина очень выросла за&nbsp;время работы с&nbsp;нами&nbsp;— буквально на&nbsp;глазах стала самостоятельным и&nbsp;уверенным дизайнером. Часто сама предлагала идеи и&nbsp;новые решения, подхватывала что-то, чего раньше не&nbsp;делала, и&nbsp;постепенно расширяла свою зону ответственности. Очень приятно было видеть этот рост и&nbsp;наблюдать, как&nbsp;она всё больше верит в&nbsp;себя и&nbsp;свои решения.</p>
+      </div>
+      <div style="flex:0 0 {{ rvW }};scroll-snap-align:start;background:#fff;border-radius:{{ rvR }};padding:{{ rvCardPad }};display:flex;flex-direction:column;gap:{{ rvCardGap }}">
+        <div style="display:flex;gap:{{ rvHeadGap }};align-items:center">
+          <div style="position:relative;width:{{ rvAv }};height:{{ rvAv }};flex:0 0 {{ rvAv }};border-radius:50%;overflow:hidden;background:rgb(217,217,217)"><div role="img" aria-label="" style="position:absolute;left:-1px;top:-0.5px;width:44px;height:44px;background:url(assets/avatar-default.png) center / cover no-repeat"></div></div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-weight:700;font-size:{{ rvName }};line-height:100%;letter-spacing:0.01em">Андрей Трусов</span>
+            <span style="font-weight:500;font-size:{{ rvRole }};line-height:100%;letter-spacing:0.01em;color:rgb(170,170,170)">СЕО New Cult</span>
+          </div>
+        </div>
+        <p style="margin:0;text-wrap:pretty;font-weight:500;font-size:{{ rvBody }};line-height:{{ rvLh }}">Мне удалось поработать с&nbsp;Алиной в&nbsp;общей сложности около полугода на&nbsp;различных проектах, и&nbsp;я&nbsp;могу с&nbsp;уверенностью сказать, что&nbsp;я&nbsp;получил удовольствие от&nbsp;сотрудничества. Алина очень ответственная, инициативная и&nbsp;быстрообучаемая. Без&nbsp;проблем и&nbsp;корректно может аргументировать свои решения.<br><br>Всем, кто думает поработать с&nbsp;Алиной&nbsp;— настоятельно рекомендую это сделать!</p>
+      </div>
+      <div style="flex:0 0 {{ rvW }};scroll-snap-align:start;background:#fff;border-radius:{{ rvR }};padding:{{ rvCardPad }};display:flex;flex-direction:column;gap:{{ rvCardGap }}">
+        <div style="display:flex;gap:{{ rvHeadGap }};align-items:center">
+          <div style="position:relative;width:{{ rvAv }};height:{{ rvAv }};flex:0 0 {{ rvAv }};border-radius:50%;overflow:hidden;background:rgb(217,217,217)"><div role="img" aria-label="" style="position:absolute;left:-1px;top:-0.5px;width:44px;height:44px;background:url(assets/avatar-default.png) center / cover no-repeat"></div><div style="position:absolute;left:-0.245px;top:-4.241px;width:43.244px;height:52.741px;background:url(assets/avatar-alexander.png) center / cover no-repeat"></div></div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-weight:700;font-size:{{ rvName }};line-height:100%;letter-spacing:0.01em">Александр Медвинский</span>
+            <span style="font-weight:500;font-size:{{ rvRole }};line-height:100%;letter-spacing:0.01em;color:rgb(170,170,170)">ex руководитель отдела брендинга Creative People</span>
+          </div>
+        </div>
+        <p style="margin:0;text-wrap:pretty;font-weight:500;font-size:{{ rvBody }};line-height:{{ rvLh }}">В&nbsp;период стажировки в&nbsp;Creative People Алина освоила приемы дизайна персонажей: создание и&nbsp;развитие характера, отрисовка персонажа в&nbsp;разных положениях и&nbsp;эмоциях. Также Алиной были самостоятельно под надзором арт-директора студии разработаны носители фирменного стиля на&nbsp;основании существующего логотипа и&nbsp;базовых элементов стиля одного из&nbsp;постоянных клиентов компании.<br><br>Алина проявила себя активным слушателем и&nbsp;интересовалась всеми аспектами работы агентства: дизайн- и&nbsp;бизнес-процессами, системой разработки бренда и&nbsp;взаимодействиями с&nbsp;клиентами.</p>
+      </div>
+    </div>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}"><button onClick="{{ next }}" aria-label="Вперёд" style="flex:0 0 51px;width:51px;height:51px;border-radius:50%;border:none;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s" style-hover="background:rgb(255,139,185);transform:scale(1.08)"><img src="assets/arrow.svg" alt="" style="width:24px;height:24px;transform:rotate(45deg)"></button></sc-if>
+  </div>
+</section>
+
+<div style="background:#fff;overflow:hidden;padding:{{ mqPad }}">
+  <div style="display:flex;width:max-content;animation:mqr {{ speed }}s linear infinite">
+    <sc-for list="{{ tagsLoop }}" as="t" hint-placeholder-count="18">
+      <span style="font-family:'Dela Gothic One',sans-serif;font-size:{{ mqFont }};line-height:0.9;white-space:nowrap;padding-right:{{ mqGap }}">{{ t }}</span>
+    </sc-for>
+  </div>
+</div>
+
+<section id="about" data-screen-label="About" style="max-width:1440px;margin:0 auto;padding:clamp(60px,8vw,113px) clamp(20px,8vw,115px) 0;scroll-margin-top:60px">
+  <div style="max-width:690px;margin:0 auto;position:relative">
+    <p style="margin:0;text-wrap:pretty;font-weight:500;font-size:clamp(19px,1.7vw,24px);line-height:{{ abLh }};letter-spacing:0.01em">За&nbsp;3+ года в&nbsp;маркетинговом дизайне я&nbsp;выросла от&nbsp;middle-дизайнера до&nbsp;лида направления. Сегодня я&nbsp;отвечаю не&nbsp;только за&nbsp;визуал, но&nbsp;и&nbsp;за&nbsp;то, какую задачу он решает: кого должен привлечь, что&nbsp;донести и&nbsp;как&nbsp;усилить бренд.<br><br>Я&nbsp;создаю KV и&nbsp;визуальные концепции кампаний, развиваю дизайн-систему бренда, курирую съёмки, работаю с&nbsp;соцсетями, презентациями и&nbsp;мерчем. Но&nbsp;мой главный навык&nbsp;—</p>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:24px;margin-top:4px;position:relative">
+      <p style="margin:0;text-wrap:pretty;font-family:'Dela Gothic One',sans-serif;font-size:clamp(22px,2.1vw,30px);line-height:1">видеть за&nbsp;дизайн-задачей<br>бизнес-задачу</p>
+      <sc-if value="{{ showApproved }}" hint-placeholder-val="{{ true }}">
+        <div style="flex:0 0 {{ apW }};width:{{ apW }};height:{{ apH }};margin-left:auto;margin-right:clamp(-50px,calc(1200px - 100vw),0px);margin-top:0;border-radius:50%;background:rgb(255,139,185);display:flex;align-items:center;justify-content:center;transform:rotate(-14deg);position:relative;transition:transform .4s" style-hover="transform:rotate(-4deg) scale(1.05)">
+          <div style="position:absolute;inset:{{ apIn }};border-radius:50%;box-shadow:inset 0 0 0 2.05px rgb(180,39,95)"></div>
+          <span style="font-family:'Dela Gothic One',sans-serif;font-size:{{ apF }};line-height:1;color:rgb(180,39,95)">approved</span>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+  <div style="max-width:1210px;margin:clamp(60px,8vw,100px) auto 0;display:flex;flex-direction:column;padding-bottom:108px">
+    <div style="border-top:2px solid #000;border-bottom:2px solid #000">
+        <button onClick="{{ faq0.toggle }}" style="width:100%;display:flex;align-items:center;gap:20px;padding:20px 0;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;font-size:24px;font-weight:500;letter-spacing:0.01em;line-height:100%;color:#000;transition:color .2s" style-hover="color:rgb(147,104,252)">
+          <span style="flex:1">Опыт работы</span>
+          <img src="assets/arrow.svg" alt="" style="width:34px;height:34px;transition:transform .5s cubic-bezier(.22,1,.36,1);transform:{{ faq0.rot }}">
+        </button>
+        <div style="display:grid;grid-template-rows:{{ faq0.rows }};opacity:{{ faq0.op }};transition:grid-template-rows .6s cubic-bezier(.22,1,.36,1),opacity .45s ease"><div style="overflow:hidden;min-height:0">
+          <div style="display:flex;flex-direction:column;gap:20px;padding:4px 0 46px">
+            
+            <div style="background:#fff;border-radius:30px;padding:30px;display:flex;flex-direction:column;gap:24px">
+              <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:14px 24px">
+                <div style="display:flex;gap:14px;align-items:center">
+                  <div style="width:43px;height:43px;flex:0 0 43px;border-radius:50%;overflow:hidden;background:rgb(147,104,252) url(assets/logo-fitmost.png) center / 150% no-repeat"></div>
+                  <div style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-weight:700;font-size:18.05px;line-height:100%;letter-spacing:0.01em">Фитмост</span>
+                    <span style="font-weight:500;font-size:14px;line-height:100%;letter-spacing:0.01em;color:rgb(170,170,170)">март 2024&nbsp;— наст. время</span>
+                  </div>
+                </div>
+                <span style="padding:14px 20px;border-radius:15px;background:rgb(223,211,255);color:rgb(147,104,252);font-size:18.05px;font-weight:500;letter-spacing:0.01em;line-height:100%">за&nbsp;два года выросла до&nbsp;тимлида направления</span>
+              </div>
+              <p style="margin:0;text-wrap:pretty;font-weight:500;font-size:14px;line-height:150%;color:#000"><b style="font-weight:700">Лидирую и&nbsp;развиваю направление дизайна в&nbsp;маркетинге</b><br>Придумываю креативные коммуникации, разрабатываю KV маркетинговых акций, создаю баннеры для&nbsp;соцсетей, перформанса, сrm, наружной рекламы, создаю визуальные концепции для&nbsp;мероприятий: оформление фотозон, залов + создание полиграфии, работаю в&nbsp;связке с&nbsp;продуктовой дизайн-командой (лендинги, аппстор, оформление приложения), организую брендовые съемки, создаю дизайн промозон</p>
+            </div>
+            
+            <div style="background:#fff;border-radius:30px;padding:30px;display:flex;flex-direction:column;gap:24px">
+              <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:14px 24px">
+                <div style="display:flex;gap:14px;align-items:center">
+                  <div style="width:43px;height:43px;flex:0 0 43px;border-radius:50%;overflow:hidden;background:rgb(217,217,217) url(assets/logo-lavka.png) center / cover no-repeat"></div>
+                  <div style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-weight:700;font-size:18.05px;line-height:100%;letter-spacing:0.01em">Яндекс Лавка</span>
+                    <span style="font-weight:500;font-size:14px;line-height:100%;letter-spacing:0.01em;color:rgb(170,170,170)">апрель 2024&nbsp;— декабрь 2025</span>
+                  </div>
+                </div>
+                <span style="padding:14px 20px;border-radius:15px;background:rgb(217,217,217);color:rgb(125,125,125);font-size:18.05px;font-weight:500;letter-spacing:0.01em;line-height:100%">аутсорс</span>
+              </div>
+              <p style="margin:0;text-wrap:pretty;font-weight:500;font-size:14px;line-height:150%;color:#000">СММ-дизайн (посты, сторис), таргет</p>
+            </div>
+            
+            <div style="background:#fff;border-radius:30px;padding:30px;display:flex;flex-direction:column;gap:24px">
+              <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:14px 24px">
+                <div style="display:flex;gap:14px;align-items:center">
+                  <div style="width:43px;height:43px;flex:0 0 43px;border-radius:50%;overflow:hidden;background:rgb(217,217,217) url(assets/logo-refeel.png) center / cover no-repeat"></div>
+                  <div style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-weight:700;font-size:18.05px;line-height:100%;letter-spacing:0.01em">re-feel (setters group)</span>
+                    <span style="font-weight:500;font-size:14px;line-height:100%;letter-spacing:0.01em;color:rgb(170,170,170)">май 2023&nbsp;— март 2024</span>
+                  </div>
+                </div>
+                
+              </div>
+              <p style="margin:0;text-wrap:pretty;font-weight:500;font-size:14px;line-height:150%;color:#000">СММ-дизайн (посты, сторис, обложки YouTube), креативный монтаж рилс, 2D&nbsp;анимация, ретушь фото, генерация изображений в&nbsp;Midjourney</p>
+            </div>
+            
+            <div style="background:#fff;border-radius:30px;padding:30px;display:flex;flex-direction:column;gap:24px">
+              <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:14px 24px">
+                <div style="display:flex;gap:14px;align-items:center">
+                  <div style="width:43px;height:43px;flex:0 0 43px;border-radius:50%;overflow:hidden;background:rgb(217,217,217) url(assets/logo-newcult.png) center / cover no-repeat"></div>
+                  <div style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-weight:700;font-size:18.05px;line-height:100%;letter-spacing:0.01em">New Cult</span>
+                    <span style="font-weight:500;font-size:14px;line-height:100%;letter-spacing:0.01em;color:rgb(170,170,170)">сентябрь 2022&nbsp;— март 2023</span>
+                  </div>
+                </div>
+                <span style="padding:14px 20px;border-radius:15px;background:rgb(217,217,217);color:rgb(125,125,125);font-size:18.05px;font-weight:500;letter-spacing:0.01em;line-height:100%">аутсорс</span>
+              </div>
+              <p style="margin:0;text-wrap:pretty;font-weight:500;font-size:14px;line-height:150%;color:#000">СММ-дизайн (посты, сторис), таргет</p>
+            </div>
+            
+            <div style="background:#fff;border-radius:30px;padding:30px;display:flex;flex-direction:column;gap:24px">
+              <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:14px 24px">
+                <div style="display:flex;gap:14px;align-items:center">
+                  <div style="width:43px;height:43px;flex:0 0 43px;border-radius:50%;overflow:hidden;background:rgb(217,217,217) url(assets/logo-cp.png) center / cover no-repeat"></div>
+                  <div style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-weight:700;font-size:18.05px;line-height:100%;letter-spacing:0.01em">Creative People</span>
+                    <span style="font-weight:500;font-size:14px;line-height:100%;letter-spacing:0.01em;color:rgb(170,170,170)">июнь&nbsp;— июль 2017</span>
+                  </div>
+                </div>
+                <span style="padding:14px 20px;border-radius:15px;background:rgb(217,217,217);color:rgb(125,125,125);font-size:18.05px;font-weight:500;letter-spacing:0.01em;line-height:100%">стажировка</span>
+              </div>
+              <p style="margin:0;text-wrap:pretty;font-weight:500;font-size:14px;line-height:150%;color:#000">Изучение Adobe Illustrator и&nbsp;Photoshop, создание иллюстраций, разработка логотипов, участие в&nbsp;брейнштормах</p>
+            </div>
+          </div>
+        </div></div>
+      </div>
+      <div style="border-bottom:2px solid #000">
+        <button onClick="{{ faq1.toggle }}" style="width:100%;display:flex;align-items:center;gap:20px;padding:20px 0;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;font-size:24px;font-weight:500;letter-spacing:0.01em;line-height:100%;color:#000;transition:color .2s" style-hover="color:rgb(147,104,252)">
+          <span style="flex:1">Образование</span>
+          <img src="assets/arrow.svg" alt="" style="width:34px;height:34px;transition:transform .5s cubic-bezier(.22,1,.36,1);transform:{{ faq1.rot }}">
+        </button>
+        <div style="display:grid;grid-template-rows:{{ faq1.rows }};opacity:{{ faq1.op }};transition:grid-template-rows .6s cubic-bezier(.22,1,.36,1),opacity .45s ease"><div style="overflow:hidden;min-height:0">
+          <p style="margin:0;padding:0 0 20px;font-size:18.05px;font-weight:500;letter-spacing:0.01em;line-height:100%">Бакалавриат СПБГУПТД Дизайн рекламы</p>
+        </div></div>
+      </div>
+      <div style="border-bottom:2px solid #000">
+        <button onClick="{{ faq2.toggle }}" style="width:100%;display:flex;align-items:center;gap:20px;padding:20px 0;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;font-size:24px;font-weight:500;letter-spacing:0.01em;line-height:100%;color:#000;transition:color .2s" style-hover="color:rgb(147,104,252)">
+          <span style="flex:1">Курсы и&nbsp;конференции</span>
+          <img src="assets/arrow.svg" alt="" style="width:34px;height:34px;transition:transform .5s cubic-bezier(.22,1,.36,1);transform:{{ faq2.rot }}">
+        </button>
+        <div style="display:grid;grid-template-rows:{{ faq2.rows }};opacity:{{ faq2.op }};transition:grid-template-rows .6s cubic-bezier(.22,1,.36,1),opacity .45s ease"><div style="overflow:hidden;min-height:0">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:24px 20px;padding:0 0 24px">
+            <span style="font-size:18.05px;font-weight:500;letter-spacing:0.01em;line-height:100%">Design Prosmotr 2026</span>
+            <span style="font-size:18.05px;font-weight:500;letter-spacing:0.01em;line-height:100%">Motion design school 2023</span>
+            <span style="font-size:18.05px;font-weight:500;letter-spacing:0.01em;line-height:100%">Сбер 2025</span>
+            <span style="font-size:18.05px;font-weight:500;letter-spacing:0.01em;line-height:100%">GO! ГЛУБОКОЕ.ОБРАЗОВАНИЕ 2022, 2023</span>
+            <span style="font-size:18.05px;font-weight:500;letter-spacing:0.01em;line-height:100%">Щёлочь 2024, 2025</span>
+            <span style="font-size:18.05px;font-weight:500;letter-spacing:0.01em;line-height:100%">Kaino 2021</span>
+            <span style="font-size:18.05px;font-weight:500;letter-spacing:0.01em;line-height:100%">Typetype Meetup 2024</span>
+            <span style="font-size:18.05px;font-weight:500;letter-spacing:0.01em;line-height:100%">PROJECTOR 2019</span>
+            <span style="font-size:18.05px;font-weight:500;letter-spacing:0.01em;line-height:100%">CHERKASOV.CO 2023</span>
+            <span style="font-size:18.05px;font-weight:500;letter-spacing:0.01em;line-height:100%">B&amp;D институт бизнеса и&nbsp;дизайна 2019</span>
+          </div>
+        </div></div>
+      </div>
+  </div>
+</section>
+
+<footer id="contacts" data-screen-label="Footer" style="background:#000;scroll-margin-top:60px">
+  <div style="max-width:1440px;margin:0 auto;padding:65px clamp(20px,8vw,115px);min-height:215px;display:flex;flex-wrap:wrap;gap:32px 46px;align-items:center;justify-content:space-between">
+    <div style="display:flex;flex-wrap:wrap;gap:16px 46px;font-weight:500;font-size:24px;line-height:100%;letter-spacing:0.01em">
+      <a href="https://www.behance.net/alinamigach" target="_blank" rel="noopener" style="color:rgb(241,241,241);transition:color .2s" style-hover="color:rgb(255,139,185)">Behance</a>
+      <a href="https://www.instagram.com/alinamigach?stkn=MXVqYTV0MmVzZ2s5MQ%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener" style="color:rgb(241,241,241);transition:color .2s" style-hover="color:rgb(255,139,185)">Instagram</a>
+      <a href="https://t.me/alinamigach" target="_blank" rel="noopener" onClick="{{ openTg }}" style="color:rgb(241,241,241);transition:color .2s" style-hover="color:rgb(255,139,185)">Telegram</a>
+      <a href="mailto:alinamigach@gmail.com" style="color:rgb(241,241,241);transition:color .2s" style-hover="color:rgb(255,139,185)">Email</a>
+    </div>
+    <a href="https://t.me/alinamigach" target="_blank" rel="noopener" onClick="{{ openTg }}" style="display:flex;justify-content:space-between;align-items:center;gap:{{ ftGap }};width:{{ ftW }};height:{{ ftH }};padding:{{ ftPad }};border-radius:56.67px;background:rgb(255,139,185);color:#000;font-family:Onest,sans-serif;font-weight:700;font-size:{{ ftF }};line-height:1.1;letter-spacing:0.01em;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-3px);box-shadow:0 12px 28px rgba(255,139,185,.45);color:#000">Летс ток<span style="width:{{ ftC }};height:{{ ftC }};border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="assets/arrow.svg" alt="" style="width:{{ ftI }};height:{{ ftI }}"></span></a>
+  </div>
+</footer>
+
+<div onClick="{{ closeMenu }}" style="position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.6);opacity:{{ mOp }};pointer-events:{{ mPe }};transition:opacity .3s ease"></div>
+<nav aria-label="Меню" style="position:fixed;left:0;right:0;bottom:0;z-index:61;background:#fff;border-radius:30px 30px 0 0;padding:35px 15px calc(18px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:8px;transform:{{ mTy }};transition:transform .4s cubic-bezier(.2,.8,.2,1);pointer-events:{{ mPe }}">
+  <a href="#projects" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;height:47.008px;padding:9.402px 9.402px 9.402px 17.236px;border-radius:31.339px;background:rgb(217,217,217);color:#000;font-family:Onest,sans-serif;font-weight:700;font-size:15.669px;line-height:1.1;letter-spacing:-0.02em;transition:transform .15s" style-active="transform:scale(.98)">Проекты<span style="width:28.205px;height:28.205px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="assets/arrow.svg" alt="" style="width:14px;height:14px"></span></a>
+  <a href="#reviews" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;height:47.008px;padding:9.402px 9.402px 9.402px 17.236px;border-radius:31.339px;background:rgb(217,217,217);color:#000;font-family:Onest,sans-serif;font-weight:700;font-size:15.669px;line-height:1.1;letter-spacing:-0.02em;transition:transform .15s" style-active="transform:scale(.98)">Отзывы<span style="width:28.205px;height:28.205px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="assets/arrow.svg" alt="" style="width:14px;height:14px"></span></a>
+  <a href="#about" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;height:47.008px;padding:9.402px 9.402px 9.402px 17.236px;border-radius:31.339px;background:rgb(217,217,217);color:#000;font-family:Onest,sans-serif;font-weight:700;font-size:15.669px;line-height:1.1;letter-spacing:-0.02em;transition:transform .15s" style-active="transform:scale(.98)">Обо мне<span style="width:28.205px;height:28.205px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="assets/arrow.svg" alt="" style="width:14px;height:14px"></span></a>
+  <a href="#contacts" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:center;height:47.008px;padding:9.402px 9.402px 9.402px 17.236px;border-radius:31.339px;background:rgb(217,217,217);color:#000;font-family:Onest,sans-serif;font-weight:700;font-size:15.669px;line-height:1.1;letter-spacing:-0.02em;transition:transform .15s" style-active="transform:scale(.98)">Контакты<span style="width:28.205px;height:28.205px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="assets/arrow.svg" alt="" style="width:14px;height:14px"></span></a>
+  <a href="https://t.me/alinamigach" target="_blank" rel="noopener" onClick="{{ menuTg }}" style="display:flex;justify-content:space-between;align-items:center;height:47.008px;padding:9.402px 9.402px 9.402px 17.236px;border-radius:31.339px;background:rgb(255,139,185);color:#000;font-family:Onest,sans-serif;font-weight:700;font-size:15.669px;line-height:1.1;letter-spacing:-0.02em;transition:transform .15s" style-active="transform:scale(.98)">Летс ток<span style="width:28.205px;height:28.205px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="assets/arrow.svg" alt="" style="width:14px;height:14px"></span></a>
+</nav>
+
+<div onClick="{{ closeNt }}" style="position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);opacity:{{ ntOp }};pointer-events:{{ ntPe }};transition:opacity .35s ease;overflow-y:auto;overscroll-behavior:contain;padding:clamp(16px,4vw,48px) clamp(12px,3vw,24px)">
+  <div onClick="{{ stop }}" role="dialog" aria-modal="true" aria-label="New Cult x Netteca" style="position:relative;max-width:658px;margin:0 auto;background:#fff;border-radius:clamp(30px,6vw,50px);padding:23px clamp(16px,4.4vw,29px) 40px;display:flex;flex-direction:column;gap:32px;transform:{{ ntTy }};transition:transform .4s cubic-bezier(.2,.8,.2,1)">
+    <button onClick="{{ closeNt }}" aria-label="Закрыть" style="position:absolute;top:23px;right:clamp(16px,4.4vw,29px);width:52px;height:52px;border-radius:50%;border:none;background:rgb(217,217,217);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1;color:#000;transition:background .2s" style-hover="background:rgb(255,139,185)">×</button>
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;flex-wrap:wrap;gap:16px;padding-right:64px"><span style="padding:16px 20px;border-radius:50px;background:rgb(217,217,217);font-weight:500;font-size:14px;line-height:1.4;letter-spacing:0.01em;color:rgb(125,125,125);white-space:nowrap">SMM design</span></div>
+      <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">New Cult x&nbsp;Netteca</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">Дизайн социальных сетей как&nbsp;метод коммуникации сложного бренда на&nbsp;простом языке</p></div>
+    </div>
+    <div style="position:relative;aspect-ratio:600/400;border-radius:50px;overflow:hidden;background:rgb(0,0,0)"><img src="assets/nt-1.png" alt="Проект New Cult × Netteca" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Бренды</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">New Cult&nbsp;— дизайн-студия из&nbsp;Санкт-Петербурга. Решают задачи по&nbsp;проектированию и&nbsp;дизайну для&nbsp;веб-сервисов и&nbsp;мобильных приложений.<br>Netteca&nbsp;— IT&nbsp;компания&nbsp;— эксперты в&nbsp;мобильном маркетинге. Льют трафик с&nbsp;Facebook, Google, UAC, In-App.</p></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Задача</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">Создать контент для&nbsp;социальных сетей (Instagram, Facebook, LinkedIn) для&nbsp;повышения узнаваемости бренда, его статусности на&nbsp;рынке и&nbsp;лояльности клиентов</p></div>
+    <div style="position:relative;aspect-ratio:600/306;border-radius:40px;overflow:hidden;background:rgb(141,218,255)"><img src="assets/nt-2.png" alt="Проект New Cult × Netteca" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Результаты</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">Мы&nbsp;разработали концепцию визуального стиля всех социальных сетей компании, в&nbsp;Instagram создали обложки и&nbsp;сторис для&nbsp;серии хайлайтов: About Us, Products, Media, Tech, собрали пример сетки на&nbsp;9&nbsp;постов, разработали шаблоны</p></div>
+    <div style="position:relative;aspect-ratio:600/400;border-radius:50px;overflow:hidden;background:rgb(147,104,252)"><img src="assets/nt-3.png" alt="Проект New Cult × Netteca" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+    <div style="display:flex;justify-content:center">
+      <a href="https://www.behance.net/gallery/168771833/oformlenie-socsetej-Netteca-New-Cult" target="_blank" rel="noopener" onClick="{{ openNtBe }}" style="display:flex;align-items:center;gap:22.67px;padding:17px 17px 17px 31.17px;border-radius:56.67px;background:rgb(147,104,252);border:none;cursor:pointer;color:#fff;font-family:Onest,sans-serif;font-weight:700;font-size:clamp(20px,4.3vw,28.34px);line-height:1.1;letter-spacing:-0.02em;transition:transform .25s,box-shadow .25s;text-decoration:none" style-hover="transform:translateY(-3px);box-shadow:0 12px 28px rgba(147,104,252,.4);color:#fff">Проект на&nbsp;Behance<span style="flex:0 0 51px;width:51px;height:51px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="assets/arrow.svg" alt="" style="width:24px;height:24px"></span></a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Моя роль</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">На&nbsp;основе дизайна сайта создала всю визуальную концепцию социальных сетей компании.</p></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:32px">
+      <a href="https://t.me/alinamigach" target="_blank" rel="noopener" onClick="{{ openTg }}" style="display:flex;align-items:center;gap:22.67px;padding:17px 17px 17px 31.17px;border-radius:56.67px;background:rgb(255,139,185);border:none;cursor:pointer;color:#000;font-family:Onest,sans-serif;font-weight:700;font-size:clamp(20px,4.3vw,28.34px);line-height:1.1;letter-spacing:-0.02em;transition:transform .25s,box-shadow .25s;text-decoration:none" style-hover="transform:translateY(-3px);box-shadow:0 12px 28px rgba(255,139,185,.5);color:#000">Летс ток<span style="flex:0 0 51px;width:51px;height:51px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="assets/arrow.svg" alt="" style="width:24px;height:24px"></span></a>
+    </div>
+  </div>
+</div>
+
+<div onClick="{{ closeCh }}" style="position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);opacity:{{ chOp }};pointer-events:{{ chPe }};transition:opacity .35s ease;overflow-y:auto;overscroll-behavior:contain;padding:clamp(16px,4vw,48px) clamp(12px,3vw,24px)">
+  <div onClick="{{ stop }}" role="dialog" aria-modal="true" aria-label="Фитмост х Chang" style="position:relative;max-width:658px;margin:0 auto;background:#fff;border-radius:clamp(30px,6vw,50px);padding:23px clamp(16px,4.4vw,29px) 40px;display:flex;flex-direction:column;gap:32px;transform:{{ chTy }};transition:transform .4s cubic-bezier(.2,.8,.2,1)">
+    <button onClick="{{ closeCh }}" aria-label="Закрыть" style="position:absolute;top:23px;right:clamp(16px,4.4vw,29px);width:52px;height:52px;border-radius:50%;border:none;background:rgb(217,217,217);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1;color:#000;transition:background .2s" style-hover="background:rgb(255,139,185)">×</button>
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;flex-wrap:wrap;gap:16px;padding-right:64px"><span style="padding:16px 20px;border-radius:50px;background:rgb(217,217,217);font-weight:500;font-size:14px;line-height:1.4;letter-spacing:0.01em;color:rgb(125,125,125);white-space:nowrap">experience marketing</span><span style="padding:16px 20px;border-radius:50px;background:rgb(217,217,217);font-weight:500;font-size:14px;line-height:1.4;letter-spacing:0.01em;color:rgb(125,125,125);white-space:nowrap">print design</span></div>
+      <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Фитмост х&nbsp;Chang</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">Перевели коммуникацию из&nbsp;рекламного сообщения в&nbsp;реальный пользовательский опыт</p></div>
+    </div>
+    <div style="position:relative;aspect-ratio:600/400;border-radius:50px;overflow:hidden;background:rgb(217,217,217)">
+      <div style="position:absolute;left:-0.667%;top:-4.75%;width:101.32%;height:107.25%;background:url(assets/proj-codex.png) 38.166% 17.146% / 100.093% 252.023% no-repeat"></div>
+      <div style="position:absolute;left:-2.167%;top:-4.75%;width:104.333%;height:109.5%;mix-blend-mode:multiply;background:rgb(85,85,85)"></div>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:16px">
+        <span style="padding:clamp(14px,4.3vw,25.846px) clamp(20px,5.4vw,32.308px);border-radius:80.77px;background:rgb(217,217,217);font-weight:700;font-size:clamp(18px,4.7vw,28.34px);line-height:1.4;letter-spacing:0.01em;color:#000;white-space:nowrap">Кейс в&nbsp;разработке</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:32px">
+      <a href="https://t.me/alinamigach" target="_blank" rel="noopener" onClick="{{ openTg }}" style="display:flex;align-items:center;gap:22.67px;padding:17px 17px 17px 31.17px;border-radius:56.67px;background:rgb(255,139,185);border:none;cursor:pointer;color:#000;font-family:Onest,sans-serif;font-weight:700;font-size:clamp(20px,4.3vw,28.34px);line-height:1.1;letter-spacing:-0.02em;transition:transform .25s,box-shadow .25s;text-decoration:none" style-hover="transform:translateY(-3px);box-shadow:0 12px 28px rgba(255,139,185,.5);color:#000">Летс ток<span style="flex:0 0 51px;width:51px;height:51px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="assets/arrow.svg" alt="" style="width:24px;height:24px"></span></a>
+    </div>
+  </div>
+</div>
+
+<div onClick="{{ closeRl }}" style="position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);opacity:{{ rlOp }};pointer-events:{{ rlPe }};transition:opacity .35s ease;overflow-y:auto;overscroll-behavior:contain;padding:clamp(16px,4vw,48px) clamp(12px,3vw,24px)">
+  <div onClick="{{ stop }}" role="dialog" aria-modal="true" aria-label="Фитмост х r.a.w.life" style="position:relative;max-width:658px;margin:0 auto;background:#fff;border-radius:clamp(30px,6vw,50px);padding:23px clamp(16px,4.4vw,29px) 40px;display:flex;flex-direction:column;gap:32px;transform:{{ rlTy }};transition:transform .4s cubic-bezier(.2,.8,.2,1)">
+    <button onClick="{{ closeRl }}" aria-label="Закрыть" style="position:absolute;top:23px;right:clamp(16px,4.4vw,29px);width:52px;height:52px;border-radius:50%;border:none;background:rgb(217,217,217);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1;color:#000;transition:background .2s" style-hover="background:rgb(255,139,185)">×</button>
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;flex-wrap:wrap;gap:16px;padding-right:64px"><span style="padding:16px 20px;border-radius:50px;background:rgb(217,217,217);font-weight:500;font-size:14px;line-height:1.4;letter-spacing:0.01em;color:rgb(125,125,125);white-space:nowrap">brand value alignment</span><span style="padding:16px 20px;border-radius:50px;background:rgb(217,217,217);font-weight:500;font-size:14px;line-height:1.4;letter-spacing:0.01em;color:rgb(125,125,125);white-space:nowrap">brand equity</span></div>
+      <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Фитмост х&nbsp;r.a.w.life</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">Коллаборация на&nbsp;основе ценностного позиционирования для&nbsp;усиления эмоциональной связи с&nbsp;потребителями</p></div>
+    </div>
+    <div style="position:relative;aspect-ratio:600/400;border-radius:50px;overflow:hidden;background:rgb(217,217,217)"><div style="position:absolute;left:-17.245%;top:-6.676%;width:134.578%;height:113.551%;background:url(assets/proj-pants.jpg) center / cover no-repeat"></div></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Бренды</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">Фитмост&nbsp;— это приложение для&nbsp;легкого поиска и&nbsp;записи на&nbsp;фитнес, красоту и&nbsp;в&nbsp;спа<br>r.a.w.life&nbsp;— российская марка полезных продуктов (батончики, гранолы, печенья и&nbsp;другие перекусы)<br><br>Мы&nbsp;объединили брендовые ценности и&nbsp;создали совместный продукт, который стал точкой пересечения аудиторий. Через коллаборацию привлекли внимание людей с&nbsp;близкими установками и&nbsp;сформировали дополнительный повод познакомиться с&nbsp;Фитмост как&nbsp;с&nbsp;частью определённого образа жизни.</p></div>
+    <div style="position:relative;aspect-ratio:600/400;border-radius:50px;overflow:hidden;background:rgb(217,217,217)"><div style="position:absolute;left:-1.333%;top:0;width:102.5%;height:100.25%;background:url(assets/rl-face.jpg) 81.942% 50% / 100.074% 230.175% no-repeat"></div></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Механика</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">Ещё до&nbsp;появления продукта в&nbsp;продаже формировали потребность в&nbsp;новом протеиновом снеке и&nbsp;создавали ожидание запуска. Ключевым инструментом стала бренд-рассылка со&nbsp;свечой в&nbsp;виде батончика и&nbsp;открыткой.</p></div>
+    <div style="position:relative;aspect-ratio:1200/800;border-radius:50px;overflow:hidden;background:rgb(147,104,252)"><img src="assets/rl-phone-post.png" alt="Пост о PR-рассылке Фитмост × r.a.w.life" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Механика</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">Создали лендинг, на&nbsp;который вели весь промо-трафик. Работали с&nbsp;доверием аудитории к&nbsp;обоим брендам и&nbsp;совместному продукту: подробно рассказали о&nbsp;составе, калорийности и&nbsp;производстве; выстроили путь пользователя к&nbsp;покупке.</p></div>
+    <div style="display:flex;justify-content:center">
+      <a href="https://fitmost-rawlife.ru/" target="_blank" rel="noopener" onClick="{{ openRlSite }}" style="display:flex;align-items:center;gap:22.67px;padding:17px 17px 17px 31.17px;border-radius:56.67px;background:rgb(147,104,252);border:none;cursor:pointer;color:#fff;font-family:Onest,sans-serif;font-weight:700;font-size:clamp(20px,4.3vw,28.34px);line-height:1.1;letter-spacing:-0.02em;transition:transform .25s,box-shadow .25s;text-decoration:none" style-hover="transform:translateY(-3px);box-shadow:0 12px 28px rgba(147,104,252,.4);color:#fff">Посмотреть лендинг<span style="flex:0 0 51px;width:51px;height:51px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="assets/arrow.svg" alt="" style="width:24px;height:24px"></span></a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Результаты</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty"><b style="font-weight:700">1,5&nbsp;млн</b> охватов</p></div>
+    <div style="position:relative;aspect-ratio:600/400;border-radius:50px;overflow:hidden;background:rgb(217,217,217)"><div style="position:absolute;left:-0.465%;top:-51.002%;width:101.125%;height:202.25%;background:url(assets/p4-sm.jpg) center / cover no-repeat"></div></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Моя роль</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">Участвовала в&nbsp;организации съемки (поиск и&nbsp;брифинг продакшна), лидировала дизайн лендинга</p></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:32px">
+      <a href="https://t.me/alinamigach" target="_blank" rel="noopener" onClick="{{ openTg }}" style="display:flex;align-items:center;gap:22.67px;padding:17px 17px 17px 31.17px;border-radius:56.67px;background:rgb(255,139,185);border:none;cursor:pointer;color:#000;font-family:Onest,sans-serif;font-weight:700;font-size:clamp(20px,4.3vw,28.34px);line-height:1.1;letter-spacing:-0.02em;transition:transform .25s,box-shadow .25s;text-decoration:none" style-hover="transform:translateY(-3px);box-shadow:0 12px 28px rgba(255,139,185,.5);color:#000">Летс ток<span style="flex:0 0 51px;width:51px;height:51px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="assets/arrow.svg" alt="" style="width:24px;height:24px"></span></a>
+    </div>
+  </div>
+</div>
+
+<div onClick="{{ closeLv }}" style="position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);opacity:{{ lvOp }};pointer-events:{{ lvPe }};transition:opacity .35s ease;overflow-y:auto;overscroll-behavior:contain;padding:clamp(16px,4vw,48px) clamp(12px,3vw,24px)">
+  <div onClick="{{ stop }}" role="dialog" aria-modal="true" aria-label="Яндекс Лавка" style="position:relative;max-width:658px;margin:0 auto;background:#fff;border-radius:clamp(30px,6vw,50px);padding:23px clamp(16px,4.4vw,29px) 40px;display:flex;flex-direction:column;gap:32px;transform:{{ lvTy }};transition:transform .4s cubic-bezier(.2,.8,.2,1)">
+    <button onClick="{{ closeLv }}" aria-label="Закрыть" style="position:absolute;top:23px;right:clamp(16px,4.4vw,29px);width:52px;height:52px;border-radius:50%;border:none;background:rgb(217,217,217);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1;color:#000;transition:background .2s" style-hover="background:rgb(255,139,185)">×</button>
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;flex-wrap:wrap;gap:16px;padding-right:64px"><span style="padding:16px 20px;border-radius:50px;background:rgb(217,217,217);font-weight:500;font-size:14px;line-height:1.4;letter-spacing:0.01em;color:rgb(125,125,125);white-space:nowrap">SMM design</span></div>
+      <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Яндекс Лавка</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">Вовлекающий контент с&nbsp;игровыми механиками внутри социальных сетей для&nbsp;выстраивания диалога с&nbsp;пользователями</p></div>
+    </div>
+    <div style="position:relative;aspect-ratio:600/400;border-radius:50px;overflow:hidden;background:rgb(217,217,217)"><div style="position:absolute;inset:0;background:url(assets/lv-1-sm.jpg) center / cover no-repeat"></div></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Бренд</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">Яндекс Лавка&nbsp;— это сервис экспресс-доставки продуктов, готовой еды и&nbsp;хозяйственных товаров на&nbsp;дом или&nbsp;в&nbsp;офис</p></div>
+    <div style="position:relative;aspect-ratio:600/306;border-radius:40px;overflow:hidden;background:rgb(141,218,255)"><img src="assets/lv-stories.png" alt="Проект Яндекс Лавка" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Моя роль</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">Создание дизайна СММ для&nbsp;Инстаграма, Телеграма и&nbsp;ВК (посты, сторис, календари, заставки), баннеров для&nbsp;таргетированной рекламы</p></div>
+    <div style="position:relative;aspect-ratio:600/367;border-radius:50px;overflow:hidden;background:rgb(0,173,255)"><img src="assets/lv-phone.png" alt="Проект Яндекс Лавка" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+    <div style="position:relative;aspect-ratio:600/400;border-radius:50px;overflow:hidden;background:rgb(147,104,252)"><div style="position:absolute;left:-23.917%;top:-108.5%;width:147.833%;height:295.667%;border-radius:91.47px;background:url(assets/lv-2-sm.jpg) center / cover no-repeat"></div></div>
+    <div style="position:relative;aspect-ratio:1200/1214;border-radius:50px;overflow:hidden;background:rgb(0,173,255)"><img src="assets/lv-collage.png" alt="Проект Яндекс Лавка" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:32px">
+      <a href="https://t.me/alinamigach" target="_blank" rel="noopener" onClick="{{ openTg }}" style="display:flex;align-items:center;gap:22.67px;padding:17px 17px 17px 31.17px;border-radius:56.67px;background:rgb(255,139,185);border:none;cursor:pointer;color:#000;font-family:Onest,sans-serif;font-weight:700;font-size:clamp(20px,4.3vw,28.34px);line-height:1.1;letter-spacing:-0.02em;transition:transform .25s,box-shadow .25s;text-decoration:none" style-hover="transform:translateY(-3px);box-shadow:0 12px 28px rgba(255,139,185,.5);color:#000">Летс ток<span style="flex:0 0 51px;width:51px;height:51px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="assets/arrow.svg" alt="" style="width:24px;height:24px"></span></a>
+    </div>
+  </div>
+</div>
+
+<div onClick="{{ closeRf }}" style="position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);opacity:{{ rfOp }};pointer-events:{{ rfPe }};transition:opacity .35s ease;overflow-y:auto;overscroll-behavior:contain;padding:clamp(16px,4vw,48px) clamp(12px,3vw,24px)">
+  <div onClick="{{ stop }}" role="dialog" aria-modal="true" aria-label="re-feel х Плюс Дача" style="position:relative;max-width:658px;margin:0 auto;background:#fff;border-radius:clamp(30px,6vw,50px);padding:23px clamp(16px,4.4vw,29px) 40px;display:flex;flex-direction:column;gap:32px;transform:{{ rfTy }};transition:transform .4s cubic-bezier(.2,.8,.2,1)">
+    <button onClick="{{ closeRf }}" aria-label="Закрыть" style="position:absolute;top:23px;right:clamp(16px,4.4vw,29px);width:52px;height:52px;border-radius:50%;border:none;background:rgb(217,217,217);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1;color:#000;transition:background .2s" style-hover="background:rgb(255,139,185)">×</button>
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;flex-wrap:wrap;gap:16px;padding-right:64px"><span style="padding:16px 20px;border-radius:50px;background:rgb(217,217,217);font-weight:500;font-size:14px;line-height:1.4;letter-spacing:0.01em;color:rgb(125,125,125);white-space:nowrap">experience marketing</span><span style="padding:16px 20px;border-radius:50px;background:rgb(217,217,217);font-weight:500;font-size:14px;line-height:1.4;letter-spacing:0.01em;color:rgb(125,125,125);white-space:nowrap">value-based marketing</span></div>
+      <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">re-feel х&nbsp;Плюс Дача</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">Создали среду, в&nbsp;которой человек мог почувствовать заботу о&nbsp;себе через тело, эмоции и&nbsp;знания.</p></div>
+    </div>
+    <div style="position:relative;aspect-ratio:600/400;border-radius:50px;overflow:hidden;background:rgb(217,217,217)"><div style="position:absolute;left:-15%;top:-1.332%;width:130.167%;height:103.053%;background:url(assets/p5-sm.jpg) center / cover no-repeat"></div></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Бренды</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">re-feel&nbsp;— wellness-бренд функционального питания и&nbsp;напитков от&nbsp;основателей коммуникационного агентства SETTERS<br>Плюс Дача&nbsp;— это сезонный фестиваль и&nbsp;пространство для&nbsp;отдыха и&nbsp;разных активностей в&nbsp;Парке Горького в&nbsp;Москве</p></div>
+    <div style="position:relative;aspect-ratio:600/400;border-radius:50px;overflow:hidden;background:rgb(95,76,155)"><div style="position:absolute;left:-0.75%;top:-62.25%;width:101.5%;height:203%;background:url(assets/rf-2-sm.jpg) center / cover no-repeat"></div></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Механика</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">Главная идея события&nbsp;— помочь жителям мегаполиса восстановить контакт с&nbsp;собой через три ключевых измерения:<br>Soul&nbsp;— эмоциональное состояние, внутренний баланс, контакт с&nbsp;собой; Mind&nbsp;— осознанность, понимание своих потребностей, работа с&nbsp;установками; Body&nbsp;— физическая активность и&nbsp;связь с&nbsp;телом.<br><br>Мы&nbsp;пригласили именитых спикеров и&nbsp;инфлюенсеров для&nbsp;проведения медитаций, лекций и&nbsp;тренировок.</p></div>
+    <div style="position:relative;aspect-ratio:600/400;border-radius:50px;overflow:hidden;background:rgb(217,217,217)"><div style="position:absolute;left:-1.417%;top:-78.75%;width:102.75%;height:274%;background:url(assets/rf-3.jpg) center / cover no-repeat"></div></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Результаты</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">re-feel превратил ценности бренда в&nbsp;опыт: через wellness-практики, природное пространство и&nbsp;иммерсивный дизайн аудитория не&nbsp;просто узнала о&nbsp;философии бренда, а&nbsp;прожила её.<br><br>Разработали дизайн, который стал продолжением общей идеи: природные текстуры, плавная анимация и&nbsp;органичная визуальная система создали ощущение живого пространства, где бренд буквально «врастает» в&nbsp;природный контекст.</p></div>
+    <div style="position:relative;aspect-ratio:1200/800;border-radius:50px;overflow:hidden;background:rgb(147,104,252)"><img src="assets/rf-cards.png" alt="Сторис и пост re-feel × Плюс Дача" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></div>
+    <div style="display:flex;justify-content:center">
+      <a href="https://www.behance.net/gallery/191646565/re-feel-x-Yandex-Plus-Dacha-wellness-day" target="_blank" rel="noopener" onClick="{{ openBe }}" style="display:flex;align-items:center;gap:22.67px;padding:17px 17px 17px 31.17px;border-radius:56.67px;background:rgb(147,104,252);border:none;cursor:pointer;color:#fff;font-family:Onest,sans-serif;font-weight:700;font-size:clamp(20px,4.3vw,28.34px);line-height:1.1;letter-spacing:-0.02em;transition:transform .25s,box-shadow .25s;text-decoration:none" style-hover="transform:translateY(-3px);box-shadow:0 12px 28px rgba(147,104,252,.4);color:#fff">Проект на&nbsp;Behance<span style="flex:0 0 51px;width:51px;height:51px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="assets/arrow.svg" alt="" style="width:24px;height:24px"></span></a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Моя роль</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">Вместе с&nbsp;арт-директором создала дизайн-концепцию мероприятия, которую реализовала в&nbsp;СММ: анимированные сторис, посты с&nbsp;анонсами. Искала и&nbsp;брифовала 3D-дизайнера.</p></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:32px">
+      <a href="https://t.me/alinamigach" target="_blank" rel="noopener" onClick="{{ openTg }}" style="display:flex;align-items:center;gap:22.67px;padding:17px 17px 17px 31.17px;border-radius:56.67px;background:rgb(255,139,185);border:none;cursor:pointer;color:#000;font-family:Onest,sans-serif;font-weight:700;font-size:clamp(20px,4.3vw,28.34px);line-height:1.1;letter-spacing:-0.02em;transition:transform .25s,box-shadow .25s;text-decoration:none" style-hover="transform:translateY(-3px);box-shadow:0 12px 28px rgba(255,139,185,.5);color:#000">Летс ток<span style="flex:0 0 51px;width:51px;height:51px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="assets/arrow.svg" alt="" style="width:24px;height:24px"></span></a>
+    </div>
+  </div>
+</div>
+
+<div onClick="{{ closeYu }}" style="position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);opacity:{{ yuOp }};pointer-events:{{ yuPe }};transition:opacity .35s ease;overflow-y:auto;overscroll-behavior:contain;padding:clamp(16px,4vw,48px) clamp(12px,3vw,24px)">
+  <div onClick="{{ stop }}" role="dialog" aria-modal="true" aria-label="Фитмост х МТС Юрент" style="position:relative;max-width:658px;margin:0 auto;background:#fff;border-radius:clamp(30px,6vw,50px);padding:23px clamp(16px,4.4vw,29px) 40px;display:flex;flex-direction:column;gap:32px;transform:{{ yuTy }};transition:transform .4s cubic-bezier(.2,.8,.2,1)">
+    <button onClick="{{ closeYu }}" aria-label="Закрыть" style="position:absolute;top:23px;right:clamp(16px,4.4vw,29px);width:52px;height:52px;border-radius:50%;border:none;background:rgb(217,217,217);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1;color:#000;transition:background .2s" style-hover="background:rgb(255,139,185)">×</button>
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;flex-wrap:wrap;gap:16px;padding-right:64px">
+        <span style="padding:16px 20px;border-radius:50px;background:rgb(217,217,217);font-weight:500;font-size:14px;line-height:1.4;letter-spacing:0.01em;color:rgb(125,125,125);white-space:nowrap">attention grabbing</span>
+        <span style="padding:16px 20px;border-radius:50px;background:rgb(217,217,217);font-weight:500;font-size:14px;line-height:1.4;letter-spacing:0.01em;color:rgb(125,125,125);white-space:nowrap">brand recall</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Фитмост х&nbsp;МТС Юрент</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">Партнерка для&nbsp;обмена аудиторией<br>и&nbsp;привлечения новых пользователей</p></div>
+    </div>
+    <div style="position:relative;aspect-ratio:600/400;border-radius:50px;overflow:hidden;background:rgb(217,217,217)"><div style="position:absolute;left:-2.667%;top:0;width:105.497%;height:105.51%;background:url(assets/yu-1-sm.jpg) center / cover no-repeat"></div><div style="position:absolute;left:0.083%;top:-0.077%;width:99.917%;height:99.929%;background:url(assets/p1-sm.jpg) center / cover no-repeat"></div></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Бренды</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">Фитмост&nbsp;— это приложение для&nbsp;легкого поиска и&nbsp;записи на&nbsp;фитнес, красоту и&nbsp;в&nbsp;спа<br>МТС Юрент&nbsp;— это сервис кикшеринга самокатов, велосипедов, электроснегокатов, а&nbsp;также пауэрбанков</p></div>
+    <div style="position:relative;aspect-ratio:600/400;border-radius:50px;overflow:hidden;background:rgb(217,217,217)"><div style="position:absolute;inset:0;background:url(assets/yu-2-sm.jpg) center / cover no-repeat"></div></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Механика</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">Создали лендинг, на&nbsp;который вели из&nbsp;пиар-посевов и&nbsp;рассылок. С&nbsp;лендинга отправляли письма с&nbsp;офферами от&nbsp;брендов на&nbsp;активных, отток, «мертвых» и&nbsp;новых пользователей.<br><br>Параллельно запустили креативную наружную рекламу в&nbsp;центре Москвы для&nbsp;привлечения внимания к&nbsp;партнерке.</p></div>
+    <div style="position:relative;aspect-ratio:600/233;border-radius:40px;overflow:hidden;background:rgb(217,217,217)"><div style="position:absolute;inset:0;background:url(assets/yu-3-sm.jpg) center / cover no-repeat"></div></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Результаты</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">Наружка на&nbsp;остановках:<br>OTS (контакты) <b style="font-weight:700">60&nbsp;млн</b> за&nbsp;каждую за&nbsp;период месяца<br><br>Кинотеатр Октябрь:<br><b style="font-weight:700">10&nbsp;млн</b> контактов за&nbsp;полмесяца<br><br>Пиар-посевы: <b style="font-weight:700">1,2&nbsp;млн</b> охвата</p></div>
+    <div style="position:relative;aspect-ratio:600/400;border-radius:50px;overflow:hidden;background:rgb(217,217,217)"><div style="position:absolute;left:-2.667%;top:0;width:105.497%;height:105.51%;background:url(assets/yu-1-sm.jpg) center / cover no-repeat"></div></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><h3 style="margin:0;font-weight:700;font-size:24px;line-height:100%;letter-spacing:0.01em">Моя роль</h3><p style="font-weight:500;font-size:18px;line-height:1.4;letter-spacing:0.01em;margin:0;text-wrap:pretty">Я&nbsp;занималась отбором и&nbsp;полной ретушью кадров со&nbsp;съемки, создала дизайн офферов для&nbsp;рассылок, дизайн всей наружной рекламы, подготовила макеты к&nbsp;печати и&nbsp;участвовала в&nbsp;создании лендинга под&nbsp;руководством лида продуктового дизайна.</p></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:32px">
+      <a href="https://t.me/alinamigach" target="_blank" rel="noopener" onClick="{{ openTg }}" style="display:flex;align-items:center;gap:22.67px;padding:17px 17px 17px 31.17px;border-radius:56.67px;background:rgb(255,139,185);border:none;cursor:pointer;color:#000;font-family:Onest,sans-serif;font-weight:700;font-size:clamp(20px,4.3vw,28.34px);line-height:1.1;letter-spacing:-0.02em;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-3px);box-shadow:0 12px 28px rgba(255,139,185,.5);color:#000">Летс ток<span style="flex:0 0 51px;width:51px;height:51px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="assets/arrow.svg" alt="" style="width:24px;height:24px"></span></a>
+    </div>
+  </div>
+</div>
+<a href="#top" onClick="{{ toTop }}" aria-label="Наверх" style="position:fixed;right:clamp(16px,3vw,40px);bottom:clamp(16px,3vw,40px);z-index:30;width:64px;height:64px;border-radius:50%;background:rgb(147,104,252);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(0,0,0,.18);transition:opacity .3s,transform .3s,background .2s;opacity:{{ upOp }};pointer-events:{{ upPe }};transform:{{ upTy }}" style-hover="background:rgb(255,139,185)"><span style="width:44px;height:44px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><img src="assets/arrow.svg" alt="" style="width:22px;height:22px;transform:rotate(-45deg)"></span></a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;marqueeSpeed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:30,&quot;min&quot;:8,&quot;max&quot;:80,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;},&quot;showApproved&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { hov: -1, open: -1, narrow: typeof window !== 'undefined' && window.innerWidth < 720 };
+  onResize = () => { const n = window.innerWidth < 720; if (n !== this.state.narrow) this.setState({ narrow: n }); };
+  onScroll = () => { const u = window.scrollY > 600; if (u !== this.state.up) this.setState({ up: u }); };
+  componentDidMount() { this.onKey = (e) => { if (e.key === 'Escape' && this.state.menu) { this.setState({ menu: false }); document.body.style.overflow = ''; } if (e.key === 'Escape' && (this.state.yu || this.state.rf || this.state.lv || this.state.rl || this.state.ch || this.state.nt)) { this.setState({ yu: false, rf: false, lv: false, rl: false, ch: false, nt: false }); document.body.style.overflow = ''; } }; window.addEventListener('keydown', this.onKey); window.addEventListener('resize', this.onResize); window.addEventListener('scroll', this.onScroll, { passive: true }); this.onResize(); this.onScroll(); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll); }
+  trackRef = React.createRef();
+  scroll(d) {
+    const el = this.trackRef.current; if (!el || this._busy || el.children.length < 2) return;
+    this._busy = true;
+    el.style.scrollSnapType = 'none'; el.scrollLeft = 0;
+    const kids = () => Array.from(el.children);
+    const s = el.children[1].offsetLeft - el.children[0].offsetLeft;
+    const set = (x, anim) => kids().forEach(k => { k.style.transition = anim ? 'transform .45s cubic-bezier(.4,0,.2,1)' : 'none'; k.style.transform = x ? `translateX(${x}px)` : ''; });
+    const finish = () => { set(0, false); el.scrollLeft = 0; this._busy = false; };
+    if (d > 0) {
+      set(-s, true);
+      setTimeout(() => { el.appendChild(el.children[0]); finish(); }, 460);
+    } else {
+      el.insertBefore(el.lastElementChild, el.firstElementChild);
+      set(-s, false); void el.offsetWidth;
+      requestAnimationFrame(() => { set(0, true); setTimeout(finish, 460); });
+    }
+  }
+  renderVals() {
+    const tags = ['дизайн-система','performance','KV','мерч','POS-материалы','презентации','events','AI','social media'];
+    const titles = ['Опыт работы','Образование','Курсы и конференции'];
+    return {
+      speed: this.props.marqueeSpeed ?? 30,
+      leave: () => this.setState({ hov: -1 }),
+      openNt: () => { this.setState({ nt: true }); document.body.style.overflow = 'hidden'; },
+      closeNt: () => { this.setState({ nt: false }); document.body.style.overflow = ''; },
+      ntOp: this.state.nt ? 1 : 0, ntPe: this.state.nt ? 'auto' : 'none', ntTy: this.state.nt ? 'translateY(0)' : 'translateY(40px)',
+      openNtBe: (e) => { e.preventDefault(); e.stopPropagation(); const u = 'https://www.behance.net/gallery/168771833/oformlenie-socsetej-Netteca-New-Cult'; let w = null; try { w = window.open(u, '_blank', 'noopener'); } catch (_) {} if (!w) { try { window.top.location.href = u; } catch (_) { window.location.href = u; } } },
+      openCh: () => { this.setState({ ch: true }); document.body.style.overflow = 'hidden'; },
+      closeCh: () => { this.setState({ ch: false }); document.body.style.overflow = ''; },
+      chOp: this.state.ch ? 1 : 0, chPe: this.state.ch ? 'auto' : 'none', chTy: this.state.ch ? 'translateY(0)' : 'translateY(40px)',
+      openRl: () => { this.setState({ rl: true }); document.body.style.overflow = 'hidden'; },
+      closeRl: () => { this.setState({ rl: false }); document.body.style.overflow = ''; },
+      rlOp: this.state.rl ? 1 : 0, rlPe: this.state.rl ? 'auto' : 'none', rlTy: this.state.rl ? 'translateY(0)' : 'translateY(40px)',
+      openRlSite: (e) => { e.preventDefault(); e.stopPropagation(); const u = 'https://fitmost-rawlife.ru/'; let w = null; try { w = window.open(u, '_blank', 'noopener'); } catch (_) {} if (!w) { try { window.top.location.href = u; } catch (_) { window.location.href = u; } } },
+      openLv: () => { this.setState({ lv: true }); document.body.style.overflow = 'hidden'; },
+      closeLv: () => { this.setState({ lv: false }); document.body.style.overflow = ''; },
+      lvOp: this.state.lv ? 1 : 0, lvPe: this.state.lv ? 'auto' : 'none', lvTy: this.state.lv ? 'translateY(0)' : 'translateY(40px)',
+      openRf: () => { this.setState({ rf: true }); document.body.style.overflow = 'hidden'; },
+      closeRf: () => { this.setState({ rf: false }); document.body.style.overflow = ''; },
+      rfOp: this.state.rf ? 1 : 0, rfPe: this.state.rf ? 'auto' : 'none', rfTy: this.state.rf ? 'translateY(0)' : 'translateY(40px)',
+      openBe: (e) => { e.preventDefault(); e.stopPropagation(); const u = 'https://www.behance.net/gallery/191646565/re-feel-x-Yandex-Plus-Dacha-wellness-day'; let w = null; try { w = window.open(u, '_blank', 'noopener'); } catch (_) {} if (!w) { try { window.top.location.href = u; } catch (_) { window.location.href = u; } } },
+      openYu: () => { this.setState({ yu: true }); document.body.style.overflow = 'hidden'; },
+      closeYu: () => { this.setState({ yu: false }); document.body.style.overflow = ''; },
+      stop: (e) => e.stopPropagation(),
+      openTg: (e) => { e.preventDefault(); e.stopPropagation(); const u = 'https://t.me/alinamigach'; let w = null; try { w = window.open(u, '_blank', 'noopener'); } catch (_) {} if (!w) { try { window.top.location.href = u; } catch (_) { window.location.href = u; } } },
+      backToProjects: () => { this.setState({ yu: false, rf: false, lv: false, rl: false, ch: false, nt: false, hov: -1 }); document.body.style.overflow = ''; const el = document.getElementById('projects'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 60, behavior: 'smooth' }); },
+      yuOp: this.state.yu ? 1 : 0, yuPe: this.state.yu ? 'auto' : 'none', yuTy: this.state.yu ? 'translateY(0)' : 'translateY(40px)',
+      toTop: (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); },
+      upOp: this.state.up ? 1 : 0, upPe: this.state.up ? 'auto' : 'none', upTy: this.state.up ? 'translateY(0)' : 'translateY(20px)',
+      ...Object.fromEntries([0,1,2,3,4,5].map(k => { const on = this.state.hov === k; return ['p' + k, { op: on ? 1 : 0, ty: on ? 'translateY(0)' : 'translateY(16px)', enter: () => this.setState({ hov: k }) }]; })),
+      wide: !this.state.narrow,
+      abLh: this.state.narrow ? '125%' : '100%',
+      ftW: this.state.narrow ? '39.6vw' : 'auto', ftH: this.state.narrow ? '13.8vw' : 'auto',
+      ftPad: this.state.narrow ? '0 2.8vw 0 5.1vw' : '17px 17px 17px 31.17px', ftGap: this.state.narrow ? '0px' : '22.67px',
+      ftF: this.state.narrow ? '4.5vw' : '28.34px', ftC: this.state.narrow ? '8.3vw' : '51px', ftI: this.state.narrow ? '4.2vw' : '24px',
+      apW: this.state.narrow ? '200px' : '304px', apH: this.state.narrow ? '91px' : '138px',
+      apIn: this.state.narrow ? '10.5px 11px' : '16px 17px', apF: this.state.narrow ? '24px' : '36px',
+      hovT: this.state.narrow ? '36px' : 'clamp(30px,5vw,72.27px)',
+      hovD: this.state.narrow ? '18px' : 'clamp(15px,2.08vw,30px)',
+      mqFont: this.state.narrow ? '20px' : '30px',
+      mqGap: this.state.narrow ? '40px' : '61px',
+      mqPad: this.state.narrow ? '7px 0 9px' : '10px 0 14px',
+      rvPad: this.state.narrow ? '11.692vw 0 12.438vw' : 'clamp(56px,8.6vw,124px) clamp(20px,8vw,115px)',
+      rvGap: this.state.narrow ? '4.546vw' : '30px',
+      rvOver: this.state.narrow ? 'auto' : 'hidden',
+      rvSnap: this.state.narrow ? 'x mandatory' : 'none',
+      rvTrackPad: this.state.narrow ? '0 3.98vw' : '8px 0',
+      rvW: this.state.narrow ? '76vw' : 'min(494px,100%)',
+      rvR: this.state.narrow ? '4.546vw' : '30px',
+      rvCardPad: this.state.narrow ? '4.546vw' : '30px',
+      rvCardGap: this.state.narrow ? '3.637vw' : '24px',
+      rvHeadGap: this.state.narrow ? '2.121vw' : '14px',
+      rvAv: this.state.narrow ? '8vw' : '43px',
+      rvName: this.state.narrow ? '3.6vw' : '18.05px',
+      rvRole: this.state.narrow ? '2.85vw' : '14px',
+      rvBody: this.state.narrow ? '3.1vw' : '14px',
+      rvSp: this.state.narrow ? '3.98vw' : '0px',
+      rvLh: this.state.narrow ? '135%' : '150%',
+      wideAr: this.state.narrow ? '370/341.153' : '1210/544',
+      halfAr: this.state.narrow ? '370/341.153' : '590/544',
+      projR: this.state.narrow ? '18.814px' : '30px',
+      projGap: this.state.narrow ? '22px' : '30px',
+      projPadX: this.state.narrow ? '16px' : 'clamp(20px,8vw,115px)',
+      narrow: this.state.narrow,
+      logoSize: this.state.narrow ? '21.717px' : 'clamp(13px,1.2vw,16.5px)',
+      headPad: this.state.narrow ? '19px 29px 18px' : 'clamp(18px,1.9vw,29px) clamp(20px,8vw,115px) clamp(17px,1.8vw,28px)',
+      mOp: this.state.narrow && this.state.menu ? 1 : 0,
+      mPe: this.state.narrow && this.state.menu ? 'auto' : 'none',
+      mTy: this.state.narrow && this.state.menu ? 'translateY(0)' : 'translateY(105%)',
+      toggleMenu: () => { const m = !this.state.menu; this.setState({ menu: m }); document.body.style.overflow = m ? 'hidden' : ''; },
+      closeMenu: () => { this.setState({ menu: false }); document.body.style.overflow = ''; },
+      menuTg: (e) => { this.setState({ menu: false }); document.body.style.overflow = ''; e.preventDefault(); const u = 'https://t.me/alinamigach'; let w = null; try { w = window.open(u, '_blank', 'noopener'); } catch (_) {} if (!w) { try { window.top.location.href = u; } catch (_) { window.location.href = u; } } },
+      b1Top: this.state.menu ? '6px' : '0px', b1Rot: this.state.menu ? 'rotate(45deg)' : 'none',
+      b3Top: this.state.menu ? '6px' : '12px', b3Rot: this.state.menu ? 'rotate(-45deg)' : 'none',
+      b2Op: this.state.menu ? 0 : 1,
+      heroCols: this.state.narrow ? 'minmax(0,1fr)' : 'minmax(0,1fr) minmax(0,48%) minmax(0,1fr)',
+      photoOrder: this.state.narrow ? 4 : 2,
+      showApproved: this.props.showApproved ?? true,
+      tagsLoop: [...tags, ...tags, ...tags, ...tags],
+      trackRef: this.trackRef,
+      prev: () => this.scroll(-1),
+      next: () => this.scroll(1),
+      ...Object.fromEntries(titles.map((title, i) => {
+        const open = this.state.open === i;
+        return ['faq' + i, { open, rows: open ? '1fr' : '0fr', op: open ? 1 : 0, rot: open ? 'rotate(-45deg)' : 'rotate(135deg)', toggle: () => this.setState({ open: open ? -1 : i }) }];
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>
